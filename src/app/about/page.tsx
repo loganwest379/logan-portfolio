@@ -12,8 +12,9 @@ import {
   Schema,
   Row,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, about, person } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
+import { SocialLinks } from "@/components/about/SocialLinks";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -48,6 +49,11 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: about.personal.title,
+      display: about.personal.display,
+      items: [],
     },
   ];
   return (
@@ -152,48 +158,9 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
-              <Row
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-                horizontal="center"
-                fitWidth
-                data-border="rounded"
-              >
-                {social
-                      .filter((item) => item.essential)
-                      .map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
-                )}
-              </Row>
-            )}
+            <div className={styles.blockAlign}>
+              <SocialLinks />
+            </div>
           </Column>
 
           {about.intro.display && (
@@ -332,6 +299,25 @@ export default function About() {
                     )}
                   </Column>
                 ))}
+              </Column>
+            </>
+          )}
+
+          {about.personal.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.personal.title}
+                variant="display-strong-s"
+                marginBottom="m"
+                marginTop="40"
+              >
+                {about.personal.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="40">
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {about.personal.content}
+                </Text>
               </Column>
             </>
           )}

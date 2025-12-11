@@ -209,6 +209,15 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  /** Personal section */
+  personal: {
+    /** Whether to display personal section */
+    display: boolean;
+    /** Title for the personal section */
+    title: string;
+    /** Personal information content */
+    content: React.ReactNode;
+  };
 }
 
 /**
