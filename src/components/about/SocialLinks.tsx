@@ -50,7 +50,7 @@ export function SocialLinks() {
                   <Button
                     key={item.name}
                     href={isEmail ? undefined : item.link}
-                    onClick={isEmail ? (e) => handleEmailClick(e, person.email) : undefined}
+                    onClick={isEmail ? (e: React.MouseEvent) => handleEmailClick(e, person.email) : undefined}
                     prefixIcon={iconToShow}
                     label={item.name}
                     size="s"
@@ -63,7 +63,7 @@ export function SocialLinks() {
                     size="l"
                     key={`${item.name}-icon`}
                     href={isEmail ? undefined : item.link}
-                    onClick={isEmail ? (e) => handleEmailClick(e, person.email) : undefined}
+                    onClick={isEmail ? (e: React.MouseEvent) => handleEmailClick(e, person.email) : undefined}
                     icon={iconToShow}
                     variant="secondary"
                   />
