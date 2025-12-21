@@ -8,6 +8,7 @@ import {
   Heading,
   SmartLink,
   Text,
+  Media,
 } from "@once-ui-system/core";
 
 interface ProjectCardProps {
@@ -32,13 +33,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
+      {images.length > 1 ? (
+        <Carousel
+          sizes="(max-width: 960px) 100vw, 960px"
+          items={images.map((image) => ({
+            slide: image,
+            alt: title,
+          }))}
+        />
+      ) : images.length > 0 ? (
+        images[0].includes("brevium") ? (
+          <div style={{ width: "100%", aspectRatio: "16/9", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "var(--background-surface)", padding: "3rem 2rem", borderRadius: "0.75rem", position: "relative" }}>
+            <img
+              src={images[0]}
+              alt={title}
+              style={{ maxWidth: "85%", maxHeight: "75%", width: "auto", height: "auto", objectFit: "contain" }}
+            />
+          </div>
+        ) : (
+          <Media
+            src={images[0]}
+            alt={title}
+            aspectRatio="16/9"
+            sizes="(max-width: 960px) 100vw, 960px"
+            style={{ objectFit: "contain" }}
+          />
+        )
+      ) : null}
       <Flex
         s={{ direction: "column" }}
         fillWidth
@@ -69,7 +90,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Read case study</Text>
+                  <Text variant="body-default-s">Read Summary</Text>
                 </SmartLink>
               )}
               {link && (

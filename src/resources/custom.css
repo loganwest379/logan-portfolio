@@ -1,3 +1,10 @@
+/* Adjust avatar image positioning to show more of the top (move image down) */
+img[src*="logan.jpg"],
+[data-avatar] img[src*="logan.jpg"],
+img[alt*="avatar"][src*="logan.jpg"] {
+  object-position: center 20% !important;
+}
+
 /* :root {
   /*
   /* Example setup for custom colors */

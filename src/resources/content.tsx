@@ -136,7 +136,7 @@ const about: About = {
       {
         company: "Nouri.ai",
         timeframe: "Jan 2025 – Apr 2025",
-        role: "Product Strategy Intern",
+        role: "Product Manager Intern",
         achievements: [
           "Minimized user confusion by ~30% through targeted onboarding videos, improving adoption and retention",
           "Analyzed client processes and surfaced 10+ system inefficiencies, recommending improvements to senior leadership",
@@ -265,48 +265,66 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      src: "/images/projects/project-01/g1.JPG",
+      alt: "Gallery image 1",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
+      src: "/images/projects/project-01/g2.JPEG",
+      alt: "Gallery image 2",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      src: "/images/projects/project-01/g3.JPEG",
+      alt: "Gallery image 3",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
+      src: "/images/projects/project-01/g4.JPEG",
+      alt: "Gallery image 4",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
+      src: "/images/projects/project-01/g5.JPEG",
+      alt: "Gallery image 5",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g6.JPEG",
+      alt: "Gallery image 6",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g7.JPEG",
+      alt: "Gallery image 7",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g8.JPEG",
+      alt: "Gallery image 8",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g9.JPEG",
+      alt: "Gallery image 9",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g10.JPEG",
+      alt: "Gallery image 10",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g11.JPEG",
+      alt: "Gallery image 11",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/g12.JPEG",
+      alt: "Gallery image 12",
+      orientation: "horizontal",
     },
   ],
 };

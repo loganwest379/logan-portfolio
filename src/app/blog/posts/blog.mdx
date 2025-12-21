@@ -1,71 +1,33 @@
 ---
-title: "Create, edit and delete blog posts"
-summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
-publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+title: "A Little Bit About Me!"
+summary: "A personal introduction about who I am, what I love, and what I'm working toward."
+publishedAt: "2025-12-09"
+tag: "Personal"
+image: "/images/gallery/blog.JPEG"
 ---
 
-## Manage posts
+Hey! I'm Logan, and I'm excited you're here. Let me tell you a bit about myself.
 
-You can create, edit and delete posts by adding, modifying or removing `*.mdx` files in the `src/app/blog/posts` directory.
+## Where I'm From
 
-## Frontmatter
+I grew up in Wenatchee, Washington—the Apple Capital of the World. It's a small city in central Washington that's surrounded by mountains, which honestly probably explains a lot about who I am today.
 
-The frontmatter is used to set the post's metadata: title, description, image, and tags. It's used in the post's page and in meta- and open graph tags.
+## What I Love
 
-<CodeBlock
-    marginBottom="16"
-    codes={[
-      {
-        code:
-`---
-title: "Arriving to a new milestone in my career"
-publishedAt: "2024-04-08"
-image: "/images/gallery/img-02.jpg"
-summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
-tag: "Journal"
----`,
-        language: "tsx",
-        label: "src/app/blog/posts/post-1.mdx"
-      }
-    ]}
-/>
+I'm a passionate skier. I've skied at 10 resorts so far and counting, and I have this dream to go heli-skiing someday. There's something about being on the mountain that just clicks for me. The cold air, the fresh snow, the challenge of getting down a run—it all just works.
 
-## MDX syntax
+When I'm not skiing, I love spending time in the mountains with my wife. We got married this past summer and it's been the best. We love playing pickleball together too, which has become a fun way to stay active and competitive.
 
-You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+## What I Do
 
-## Custom components
+I'm a Product Manager, and honestly, I love it. Growing up, I always knew I wanted to work with people, but it took me a while to figure out exactly how. When I discovered product management, everything just made sense. It's this perfect combination of working closely with customers, understanding what they need, and then working with a team to build something that actually solves real problems.
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+Right now I'm studying at Brigham Young University in the Marriott School of Business, focusing on Strategic Management with a minor in Computer Science. I was one of 25 students selected for the specialized Product Management track, which has been an incredible opportunity to learn from people who've been doing this for years.
 
-<CodeBlock
-    marginBottom="16"
-    highlight="11-12"
-    codes={[
-      {
-        code:
-`const components = {
-    p: createParagraph as any,
-    h1: createHeading(1) as any,
-    h2: createHeading(2) as any,
-    h3: createHeading(3) as any,
-    h4: createHeading(4) as any,
-    h5: createHeading(5) as any,
-    h6: createHeading(6) as any,
-    img: createImage as any,
-    a: CustomLink as any,
-    Table,
-    CodeBlock,
-};`,
-        language: "tsx",
-        label: "src/components/mdx.tsx"
-      }
-    ]}
-/>
+## My Dream
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+My goal is to be a great product manager—someone who really understands customers and gets to work with them directly. I want to be that bridge between what customers need and what gets built. I've learned that the best product managers are the ones who stay connected, who listen, and who focus on solving real problems rather than just building cool features.
 
-## Hot reload
+I've had some great experiences so far—interning at places like Brevium and LeaderFactor, doing product strategy work, and even starting my own side project (Glide, a ski waxing service). Each experience has taught me something new about what it means to build products people actually want.
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+So that's me in a nutshell. I love product management, I love skiing, and I love working with people to build things that matter. Thanks for stopping by!
