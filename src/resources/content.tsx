@@ -37,7 +37,7 @@ const social: Social = [
   {
     name: "Resume",
     icon: "document",
-    link: "/Logan_West_Product_Manager_Resume .pdf",
+    link: "/resume.pdf",
     essential: true,
   },
 ];

@@ -41,6 +41,7 @@ export function SocialLinks() {
         .filter((item) => item.essential)
         .map((item) => {
           const isEmail = item.name === "Email";
+          const isResume = item.name === "Resume";
           const iconToShow = isEmail && copiedEmail ? "check" : item.icon;
 
           return (
@@ -56,6 +57,7 @@ export function SocialLinks() {
                     size="s"
                     weight="default"
                     variant="secondary"
+                    target={isResume ? "_blank" : undefined}
                   />
                 </Row>
                 <Row hide s={{ hide: false }}>
@@ -66,6 +68,7 @@ export function SocialLinks() {
                     onClick={isEmail ? (e: React.MouseEvent) => handleEmailClick(e, person.email) : undefined}
                     icon={iconToShow}
                     variant="secondary"
+                    target={isResume ? "_blank" : undefined}
                   />
                 </Row>
               </React.Fragment>
