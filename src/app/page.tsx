@@ -99,6 +99,16 @@ export default function Home() {
               </Button>
               <Button
                 data-border="rounded"
+                href="https://github.com/loganwest379"
+                variant="secondary"
+                size="m"
+                weight="default"
+                prefixIcon="github"
+              >
+                GitHub
+              </Button>
+              <Button
+                data-border="rounded"
                 href="https://www.linkedin.com/in/loganwest03"
                 variant="secondary"
                 size="m"
