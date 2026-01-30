@@ -22,6 +22,12 @@ export function CarouselPreloader() {
 
       // Also preload using Image object to ensure browser cache
       const img = new Image();
+      img.onerror = () => {
+        console.error(`Failed to load carousel image: ${src}`);
+      };
+      img.onload = () => {
+        console.log(`Successfully loaded carousel image: ${src}`);
+      };
       img.src = src;
     });
   }, []);
