@@ -130,9 +130,9 @@ export default function Home() {
             <Carousel
               sizes="(max-width: 960px) 100vw, 960px"
               items={[
+                { slide: "/images/projects/project-01/cover2.JPEG", alt: "Cover image 1" },
+                { slide: "/images/projects/project-01/cover1.JPEG", alt: "Cover image 2" },
                 { slide: "/images/projects/project-01/cover3.JPEG", alt: "Cover image 3" },
-                { slide: "/images/projects/project-01/cover2.JPEG", alt: "Cover image 2" },
-                { slide: "/images/projects/project-01/cover1.JPEG", alt: "Cover image 1" },
                 { slide: "/images/projects/project-01/cover4.JPEG", alt: "Cover image 4" },
               ]}
             />
