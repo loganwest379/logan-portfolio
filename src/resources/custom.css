@@ -11,13 +11,18 @@ img[alt*="avatar"][src*="logan.jpg"] {
   scroll-behavior: smooth;
 }
 
-/* Smooth transitions for carousel slides and images */
+/* Fast, immediate transitions for carousel slides and images - no lag */
 .cover1-crop img,
 .cover1-crop picture,
 [data-carousel] img,
 [data-carousel] picture {
-  transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.15s ease-out !important;
+  will-change: opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  image-rendering: auto;
 }
 
 /* Ensure carousel images load properly and handle errors */
@@ -31,16 +36,36 @@ img[alt*="avatar"][src*="logan.jpg"] {
   image-rendering: crisp-edges;
 }
 
-/* Preload carousel images to prevent broken images */
-.cover1-crop img[src*="cover2"] {
-  loading: "eager";
+/* Force eager loading for all carousel images to prevent lag */
+.cover1-crop img,
+[data-carousel] img {
+  loading: eager !important;
+  fetchpriority: high;
 }
 
-/* Smooth carousel container */
+/* Hide previous image immediately on transition */
+[data-carousel] img:not([data-active="true"]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-carousel] img[data-active="true"] {
+  opacity: 1;
+  transition: opacity 0.15s ease-out !important;
+}
+
+/* Smooth carousel container with instant switching */
 [data-carousel],
 [role="region"][aria-label*="carousel"] {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+}
+
+/* Optimize carousel slide transitions - immediate switch */
+[data-carousel] > * {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform;
 }
 
 /* :root {

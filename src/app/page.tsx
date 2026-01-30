@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
+import { CarouselPreloader } from "@/components/CarouselPreloader";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -27,7 +28,9 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <>
+      <CarouselPreloader />
+      <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -157,5 +160,6 @@ export default function Home() {
         </Column>
       )}
     </Column>
+    </>
   );
 }
