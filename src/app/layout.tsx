@@ -54,6 +54,10 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <link rel="preload" as="image" href="/images/projects/project-01/cover2.JPEG" />
+        <link rel="preload" as="image" href="/images/projects/project-01/cover1.JPEG" />
+        <link rel="preload" as="image" href="/images/projects/project-01/cover3.JPEG" />
+        <link rel="preload" as="image" href="/images/projects/project-01/cover4.JPEG" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{

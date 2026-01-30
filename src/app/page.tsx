@@ -123,7 +123,7 @@ export default function Home() {
       </Column>
       <RevealFx translateY="16" delay={0.6}>
         <Column fillWidth paddingX="l">
-          <div className="cover1-crop">
+          <div className="cover1-crop" style={{ scrollBehavior: "smooth" }}>
             <Carousel
               sizes="(max-width: 960px) 100vw, 960px"
               items={[

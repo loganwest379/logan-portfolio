@@ -5,6 +5,44 @@ img[alt*="avatar"][src*="logan.jpg"] {
   object-position: center 20% !important;
 }
 
+/* Smooth scrolling for carousel */
+.cover1-crop,
+.cover1-crop * {
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions for carousel slides and images */
+.cover1-crop img,
+.cover1-crop picture,
+[data-carousel] img,
+[data-carousel] picture {
+  transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* Ensure carousel images load properly and handle errors */
+.cover1-crop img,
+[data-carousel] img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Preload carousel images to prevent broken images */
+.cover1-crop img[src*="cover2"] {
+  loading: "eager";
+}
+
+/* Smooth carousel container */
+[data-carousel],
+[role="region"][aria-label*="carousel"] {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* :root {
   /*
   /* Example setup for custom colors */
