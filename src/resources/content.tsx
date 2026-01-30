@@ -14,7 +14,7 @@ const person: Person = {
 
 const newsletter: Newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
 
@@ -70,7 +70,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Hi! I'm Logan, thanks for finding my portfolio. I'm so glad you're here. I built this website to provide a place to share what I've done, what I'm working on, and the fun things I like to do! Feel free to connect with me; I'd love to say hello!
+      Hi! I&apos;m Logan, thanks for finding my portfolio. I&apos;m so glad you&apos;re here. I built this website to provide a place to share what I&apos;ve done, what I&apos;m working on, and the fun things I like to do! Feel free to connect with me; I&apos;d love to say hello!
     </>
   ),
 };
