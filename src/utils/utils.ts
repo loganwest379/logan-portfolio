@@ -19,7 +19,16 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  linkLabel?: string;
   github?: string;
+  /** Work projects: job title or your role on the project */
+  role?: string;
+  /** Work projects: e.g. "May 2026 – Aug 2026" */
+  timeframe?: string;
+  /** Work projects: position on the Work page (1 = first). Unordered items follow, newest first. */
+  order?: number;
+  /** Show the first image as a centered logo instead of a full-bleed cover */
+  logo?: boolean;
 };
 
 import { notFound } from "next/navigation";
@@ -52,6 +61,10 @@ function validateFrontmatter(filePath: string, data: Record<string, unknown>, co
 
   // Images in frontmatter plus local images used in the body: ![alt](/images/..) or src="/images/.."
   const bodyImages = [...content.matchAll(/(?:\]\(|src=["'])(\/images\/[^)"'\s]+)/g)].map((m) => m[1]);
+  if (data.order !== undefined && typeof data.order !== "number") {
+    problems.push(`"order" must be a number (got "${data.order}")`);
+  }
+
   const images = [data.image, ...(Array.isArray(data.images) ? data.images : []), ...bodyImages].filter(
     (src): src is string => typeof src === "string" && src.startsWith("/"),
   );
@@ -85,7 +98,12 @@ function readMDXFile(filePath: string) {
     tag: data.tag || "",
     team: data.team || [],
     link: data.link || "",
+    linkLabel: data.linkLabel || "",
     github: data.github || "",
+    role: data.role || "",
+    timeframe: data.timeframe || "",
+    order: typeof data.order === "number" ? data.order : undefined,
+    logo: data.logo === true,
   };
 
   return { metadata, content };

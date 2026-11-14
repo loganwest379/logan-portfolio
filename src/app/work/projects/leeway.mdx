@@ -1,0 +1,78 @@
+---
+title: "Leeway - Travel Money App for iPhone"
+publishedAt: "2026-11-10"
+summary: "A calm travel money app I'm building on my own: one Free to Spend number for your whole trip, updated automatically from the cards you link. Running on real bank data through Plaid Production, with App Store launch planned for mid-December 2026."
+images:
+  - "/images/projects/leeway/cover.png"
+role: "Founder"
+timeframe: "2026 – Present"
+order: 3
+link: "https://www.leewaytrip.com"
+linkLabel: "Visit leewaytrip.com"
+---
+
+## Overview
+
+**Leeway** turns a trip into one number: **Free to Spend**. You set a trip budget, link the cards you travel with, and Leeway shows what's left after everything you've spent, what's still pending, and what you've set aside. No spreadsheets, no typing in receipts.
+
+I'm the founder, and I built it myself: product, design and code.
+
+![Three Leeway screens: planning a trip, choosing trip cards, and the Free to Spend overview](/images/projects/leeway/app-screens.jpg)
+
+## The problem
+
+On a trip, it's hard to know what you actually have left to spend.
+
+- **Spending is scattered** across two or three cards, pending charges, flights and hotels paid months ago, refunds, and cash.
+- **Bank apps don't answer the question.** They show a balance, not what's left of the trip budget, and pending charges can take days to post.
+- **So people guess.** Today's fix is a spreadsheet, a notes app, or nothing. Many people only find out they overspent after they get home.
+
+It happened to us. My wife and I overspent on a trip to Europe, and we ended up adding it all up on a calculator at night. I wanted one number that told us what we could still spend. Nothing did that from our actual cards, so I built it.
+
+## The solution
+
+**Free to Spend = Trip budget − Spent − Pending − Set aside**
+
+- **Connect the cards you travel with.** Read-only bank connection through Plaid; Leeway can never move money.
+- **Trip purchases are found for you.** Pending charges count right away, and only once.
+- **Unclear purchases get a question.** Leeway asks instead of guessing, so the number stays honest.
+- **Prepaid bookings and plans count.** Set money aside for the tour you haven't paid for yet.
+- **A recap after the trip:** how you did, where it went, and what to plan next time.
+
+## Who it's for
+
+- **Primary: study abroad students.** BYU sends about 2,482 students on 213 international programs a year. Each one spends 3 to 12 weeks abroad on their own cards.
+- **Secondary: young couples** taking 1 to 3 big trips a year and juggling several cards.
+
+## How I built it
+
+- **iOS app** in React Native (Expo), with a **server** on Next.js and Vercel
+- **Supabase** Postgres with row-level security, and Sign in with Apple
+- **Plaid** for bank data. Approved for **Plaid Production** after Plaid's security review, and live on real banks since November 2026
+- A matching engine for trip purchases (pending to posted, prepaid bookings, questions instead of guesses), backed by **about 2,900 automated tests**
+- **13 TestFlight builds** since October 2026
+- The [leewaytrip.com](https://www.leewaytrip.com) marketing site and waitlist, also built in Next.js
+
+## Business model
+
+- **Free** for your first trip
+- **Trip Pass:** $12.99 per trip
+- **Annual:** $34.99 for unlimited trips
+- Free for everyone during the beta
+
+## Traction so far
+
+- **~40** people on the waitlist or who asked to try it
+- **~18** said they'd pay for it
+- **~10** asked to be beta testers
+- **2** users on real bank data today
+
+## What's next
+
+- **Mid-December 2026:** App Store launch, free during the beta
+- Ad tests on Meta and Apple Search Ads to learn which message and audience work, and what an activated user costs
+- Partnering with BYU study abroad programs, then shared group trips
+
+## Skills
+
+0-to-1 product development · Customer discovery · Pricing and unit economics · Go-to-market planning · Mobile and web development (React Native, Next.js, Supabase) · Fintech compliance (Plaid)

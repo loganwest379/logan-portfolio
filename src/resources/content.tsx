@@ -56,17 +56,17 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Welcome to my portfolio!</>,
   featured: {
-    display: false,
+    display: true,
     title: (
       <Row gap="12" vertical="center">
         <strong className="ml-4">Featured</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Building Leeway, a travel money app
         </Text>
       </Row>
     ),
-    href: "/work/glide-ski-tuning",
+    href: "/work/leeway",
   },
   subline: (
     <>
@@ -102,7 +102,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I have a passion for product management. Growing up I always wanted to work with other people and once I found product management I learned that was the career I needed to be in. It is the perfect bridge between working with customers and delivering the best product. I am excited to combine my business strategy with my technical skills to build products that solve real problems. My work spans SaaS platforms, user experience optimization, and data-driven product decisions.
+        I have a passion for product management. Growing up I always wanted to work with other people and once I found product management I learned that was the career I needed to be in. It is the perfect bridge between working with customers and delivering the best product. I am excited to combine my business strategy with my technical skills to build products that solve real problems. Most recently I was a Product Manager Intern at Walmart Global Tech, and right now I&apos;m building Leeway, a travel money app for iPhone. My work spans SaaS platforms, user experience optimization, and data-driven product decisions.
       </>
     ),
   },
@@ -111,21 +111,30 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "LeaderFactor",
-        timeframe: "Jan 2026 – Apr 2026",
-        role: "Product Manager Intern",
+        company: "Walmart",
+        timeframe: "May 2026 – Aug 2026",
+        role: "Product Manager Intern – Global Tech (Accelerated Pickup & Delivery)",
         achievements: [
-          "Prototyped and tested direct-to-consumer funnels (landing pages, messaging, pricing) with rapid A/B experiments",
-          "Analyzed usage and survey data to validate the 15-skill model and improve onboarding and retention",
-          "Built competitor scans, personas, and customer journey maps to inform positioning and go-to-market strategy",
-          "Produced concise executive readouts (findings, KPIs, next experiments) and drafted UX copy or lightweight PRDs",
+          "Built a self-service Python/FastAPI + BigQuery dashboard giving real-time performance visibility across 19 fulfillment sites, replacing one-off analyst requests, then transferred full ownership to 2 full-time PMs",
+          "Designed a diagnostic framework isolating a single fixable product-selection gap, then closed it, adding 1,463 products to one site's assortment and lifting order completion by 3.6 percentage points",
+          "Developed a site-complexity model ranking all 19 locations to prioritize Product and Engineering focus, then presented findings to SVP-level leadership across 4 review rounds, aligning 10+ cross-functional stakeholders",
         ],
         images: [],
       },
       {
-        company: "Brevium",
-        timeframe: "May 2025 – Aug 2025",
+        company: "LeaderFactor – Leadership Assessment SaaS",
+        timeframe: "Jan 2026 – Apr 2026",
         role: "Product Manager Intern",
+        achievements: [
+          "Prototyped and tested D2C funnels across landing pages, messaging, and pricing using A/B experiments",
+          "Analyzed usage and survey data to validate the 15-skill model, surfacing onboarding and retention opportunities",
+        ],
+        images: [],
+      },
+      {
+        company: "Brevium – Healthcare SaaS",
+        timeframe: "May 2025 – Aug 2025",
+        role: "Product Manager Intern – Implementation",
         achievements: [
           "Designed a scalable intake framework to streamline team operations and cut research time by 50%",
           "Enabled enterprise billing for the top 15 private equity clients by leading a 4-engineer team from discovery to launch of a new billing feature",
@@ -135,24 +144,22 @@ const about: About = {
         images: [],
       },
       {
-        company: "Brigham Young University – Marriott School of Business",
-        timeframe: "Feb 2025 – Apr 2025",
-        role: "Strategy Research Assistant",
+        company: "Nouri.ai – CRM & Events Platform",
+        timeframe: "Jan 2025 – Apr 2025",
+        role: "Product Manager Intern",
         achievements: [
-          "Clarified the PMA's value proposition for students by structuring 30+ content assets on club tracks and offerings",
-          "Promoted user engagement by integrating 5+ interactive features, accelerating website usability and user retention",
-          "Reduced navigation errors by 35% through user-driven audits, usability testing, and iterative design improvements",
+          "Reduced user confusion by ~30% through targeted onboarding content, improving product adoption and retention",
+          "Analyzed client workflows, surfaced 10+ inefficiencies, and delivered solutions to senior leadership",
         ],
         images: [],
       },
       {
-        company: "Nouri.ai",
-        timeframe: "Jan 2025 – Apr 2025",
-        role: "Product Manager Intern",
+        company: "Product Management Association – BYU",
+        timeframe: "Mar 2026 – Present",
+        role: "Vice President",
         achievements: [
-          "Minimized user confusion by ~30% through targeted onboarding videos, improving adoption and retention",
-          "Analyzed client processes and surfaced 10+ system inefficiencies, recommending improvements to senior leadership",
-          "Outlined a 25% website efficiency gain by delivering a report on navigation and feature optimization",
+          "Led a campus tabling event as VP to grow club membership, recruiting 21+ new members through direct outreach",
+          "Mentor ~30 club members on product management fundamentals, case prep, and resume building, serving as a go-to resource for underclassmen navigating PM recruiting",
         ],
         images: [],
       },
@@ -166,15 +173,13 @@ const about: About = {
         name: "Brigham Young University – Marriott School of Business",
         description: (
           <>
-            Bachelor of Science in Strategic Management, Minor in Computer Science. <br />
+            Bachelor of Science in Strategic Management, Minor in Computer Science · Graduating Dec 2026 <br />
             <br />
-            Emphasis in Product Management – one of 25 students selected for specialized PM track <br />
+            Emphasis in Product Management – 1 of 25 students selected for the specialized PM track <br />
             <br />
-            GPA 3.93/4.00 <br />
+            GPA 3.9 / 4.00 · Dean&apos;s List · Full Tuition Merit-Based Scholarship · Marriott Research Fellow <br />
             <br />
-            Washington Apple Education Foundation, Full Tuition Merit-Based Scholarship <br />
-            <br />
-            Member of Product Management Association & Marriott Research Fellows
+            Relevant coursework: Advanced Competitive Strategy, Strategy Analytics, Economics of Strategy, Programming
           </>
         ),
       },
@@ -185,52 +190,36 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Product Management",
+        title: "Product Management & UX",
         description: (
-          <>Leading product development with Agile methodologies, Jira, Notion, and Confluence. Building scalable frameworks and driving data-driven decisions.</>
+          <>PRDs, roadmapping, stakeholder interviews, customer discovery, A/B testing, and wireframing, with Jira and Figma.</>
         ),
         tags: [
-          {
-            name: "Jira",
-            icon: "jira",
-          },
-          {
-            name: "Notion",
-            icon: "notion",
-          },
-        ],
-        images: [],
-      },
-      {
-        title: "UX/UI & Prototyping",
-        description: (
-          <>Creating user-centered designs and interactive prototypes with Figma, Bolt, and Lovable to validate ideas and improve user experiences.</>
-        ),
-        tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "Jira", icon: "jira" },
+          { name: "Figma", icon: "figma" },
         ],
         images: [],
       },
       {
         title: "Data & Analytics",
         description: (
-          <>Analyzing product metrics and user behavior using Python, SQL, R, and Tableau to inform product strategy and measure success.</>
+          <>Turning product and operational data into decisions with BigQuery, Python, SQL, R, and Tableau.</>
         ),
-        tags: [
-          {
-            name: "Python",
-            icon: "python",
-          },
-        ],
+        tags: [{ name: "Python", icon: "python" }],
         images: [],
       },
       {
-        title: "AI & Automation",
+        title: "Web & Development",
         description: (
-          <>Leveraging OpenAI API, Cursor AI, and ElevenLabs to accelerate development and enhance product capabilities.</>
+          <>Shipping real products with React, Next.js, React Native, Supabase, FastAPI, Vercel, and Git/GitHub.</>
+        ),
+        tags: [{ name: "GitHub", icon: "github" }],
+        images: [],
+      },
+      {
+        title: "AI & Prototyping",
+        description: (
+          <>Building and prototyping faster with Claude, Codex, ElevenLabs, and Antigravity. Certified: OpenAI Academy, Google AI Essentials.</>
         ),
         tags: [],
         images: [],

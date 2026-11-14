@@ -100,9 +100,30 @@ export default async function Project({
           <Text variant="label-strong-m">Projects</Text>
         </SmartLink>
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+          {post.metadata.role || post.metadata.timeframe
+            ? [post.metadata.role, post.metadata.timeframe].filter(Boolean).join(" · ")
+            : post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
         </Text>
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+        {(post.metadata.link || post.metadata.github) && (
+          <Row gap="12" marginTop="8" wrap horizontal="center">
+            {post.metadata.link && (
+              <Button
+                href={post.metadata.link}
+                variant="secondary"
+                size="s"
+                suffixIcon="arrowUpRightFromSquare"
+              >
+                {post.metadata.linkLabel || "Visit site"}
+              </Button>
+            )}
+            {post.metadata.github && (
+              <Button href={post.metadata.github} variant="tertiary" size="s" prefixIcon="github">
+                Code
+              </Button>
+            )}
+          </Row>
+        )}
       </Column>
       <Row marginBottom="32" horizontal="center">
         <Row gap="16" vertical="center">
@@ -121,8 +142,15 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
-      {post.metadata.images.length > 0 && post.slug !== "simple-portfolio-builder" && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} style={{ objectFit: "contain" }} />
+      {post.metadata.images.length > 0 && !post.metadata.logo && (
+        <Media
+          priority
+          aspectRatio="16 / 9"
+          radius="m"
+          alt={post.metadata.title}
+          src={post.metadata.images[0]}
+          sizes="(max-width: 960px) 100vw, 960px"
+        />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />

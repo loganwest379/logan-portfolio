@@ -15,7 +15,11 @@ export function Projects({ range, exclude }: ProjectsProps) {
     allProjects = allProjects.filter((post) => !exclude.includes(post.slug));
   }
 
+  // Projects with an `order` come first (1, 2, 3...), then the rest newest first.
   const sortedProjects = allProjects.sort((a, b) => {
+    const orderA = a.metadata.order ?? Number.POSITIVE_INFINITY;
+    const orderB = b.metadata.order ?? Number.POSITIVE_INFINITY;
+    if (orderA !== orderB) return orderA - orderB;
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
@@ -36,7 +40,11 @@ export function Projects({ range, exclude }: ProjectsProps) {
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
+          linkLabel={post.metadata.linkLabel}
           github={post.metadata.github || ""}
+          role={post.metadata.role}
+          timeframe={post.metadata.timeframe}
+          logo={post.metadata.logo}
         />
       ))}
     </Column>
