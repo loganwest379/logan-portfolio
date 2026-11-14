@@ -101,6 +101,11 @@ export interface Home extends BasePageConfig {
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
+  /** Photos shown in the homepage carousel, in order */
+  carousel: Array<{
+    src: string;
+    alt: string;
+  }>;
 }
 
 /**

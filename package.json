@@ -1,17 +1,20 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
-  "version": "2.3.0",
+  "name": "logan-portfolio",
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "biome-write": "npx @biomejs/biome format --write .",
     "start": "next start",
-    "lint": "biome lint ./src"
+    "lint": "biome lint ./src",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^16.4.6",
     "@once-ui-system/core": "^1.8.5",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.1.0",
     "classnames": "^2.5.1",
     "cookie": "^1.1.1",
     "gray-matter": "^4.0.3",

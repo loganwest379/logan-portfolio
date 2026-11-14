@@ -73,6 +73,12 @@ const home: Home = {
       Hi! I&apos;m Logan, thanks for finding my portfolio. I&apos;m so glad you&apos;re here. I built this website to provide a place to share what I&apos;ve done, what I&apos;m working on, and the fun things I like to do! Feel free to connect with me; I&apos;d love to say hello!
     </>
   ),
+  carousel: [
+    { src: "/images/home/cover-2.jpg", alt: "Logan and wife taking a selfie in a tall green field" },
+    { src: "/images/home/cover-1.jpg", alt: "Logan and wife standing in a golden field at sunset with mountains behind" },
+    { src: "/images/home/cover-3.jpg", alt: "Logan and wife in rain jackets inside a graffiti-covered lookout above a valley" },
+    { src: "/images/home/cover-4.jpg", alt: "Logan and wife on their wedding day in a field of tall grass" },
+  ],
 };
 
 const about: About = {
@@ -242,7 +248,7 @@ const about: About = {
         I am from Wenatchee, Washington, the Apple Capital of the World!
         <br />
         <br />
-        I recently got married this past summer to my best friend and we love spending time in the mountains, skiing, and playing pickleball.
+        I married my best friend in the summer of 2025, and we love spending time in the mountains, skiing, and playing pickleball.
       </>
     ),
   },
@@ -273,63 +279,63 @@ const gallery: Gallery = {
   description: `A photo collection by ${person.name}`,
   images: [
     {
-      src: "/images/projects/project-01/g1.JPG",
-      alt: "Gallery image 1",
+      src: "/images/gallery/photo-01.jpg",
+      alt: "Logan and a friend in front of rows of stormtrooper figures at an exhibit",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g2.JPEG",
-      alt: "Gallery image 2",
+      src: "/images/gallery/photo-02.jpg",
+      alt: "Logan and wife in helmets and goggles on a snowy ski run",
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/project-01/g3.JPEG",
-      alt: "Gallery image 3",
+      src: "/images/gallery/photo-03.jpg",
+      alt: "Logan and wife in helmets on a zipline platform above a green valley",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g4.JPEG",
-      alt: "Gallery image 4",
+      src: "/images/gallery/photo-04.jpg",
+      alt: "Logan and wife taking a selfie at a lookout over misty green mountains",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g5.JPEG",
-      alt: "Gallery image 5",
+      src: "/images/gallery/photo-05.jpg",
+      alt: "Logan and wife standing on rocks by a mountain lake",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g6.JPEG",
-      alt: "Gallery image 6",
+      src: "/images/gallery/photo-06.jpg",
+      alt: "Logan and wife taking a selfie in front of two tents at a campsite",
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/project-01/g7.JPEG",
-      alt: "Gallery image 7",
+      src: "/images/gallery/photo-07.jpg",
+      alt: "Logan and wife taking a selfie in a tall green field",
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/project-01/g8.JPEG",
-      alt: "Gallery image 8",
+      src: "/images/gallery/photo-08.jpg",
+      alt: "Logan and wife taking a selfie at a mountain trailhead",
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/project-01/g9.JPEG",
-      alt: "Gallery image 9",
+      src: "/images/gallery/photo-09.jpg",
+      alt: "Logan and wife at a theme park at night in front of a large spaceship replica",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g10.JPEG",
-      alt: "Gallery image 10",
+      src: "/images/gallery/photo-10.jpg",
+      alt: "Logan and wife in blue at a night college football game",
       orientation: "horizontal",
     },
     {
-      src: "/images/projects/project-01/g11.JPEG",
-      alt: "Gallery image 11",
+      src: "/images/gallery/photo-11.jpg",
+      alt: "Logan and wife holding a pumpkin in front of a lit-up red barn at night",
       orientation: "vertical",
     },
     {
-      src: "/images/projects/project-01/g12.JPEG",
-      alt: "Gallery image 12",
+      src: "/images/gallery/photo-12.jpg",
+      alt: "Logan and wife at a ski resort with snowy peaks behind",
       orientation: "vertical",
     },
   ],

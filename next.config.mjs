@@ -20,6 +20,15 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // A second Vercel project (logan-portfolio-five) deploys this same repo.
+      // Send its visitors to the main URL so there's one canonical site.
+      // Not permanent, so this is easy to reverse if the canonical URL changes.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "logan-portfolio-five.vercel.app" }],
+        destination: "https://logan-portfolio-xzmm.vercel.app/:path*",
+        permanent: false,
+      },
       {
         source: "/work/building-once-ui-a-customizable-design-system",
         destination: "/work/glide-ski-tuning",
