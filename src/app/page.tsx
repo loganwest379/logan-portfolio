@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes, social, sameAs } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
+import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -129,6 +130,19 @@ export default function Home() {
           </div>
         </Column>
       </RevealFx>
+      {routes["/work"] && (
+        <Column fillWidth gap="l" paddingX="l">
+          <Row fillWidth vertical="end" horizontal="between" gap="16" wrap>
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              Selected work
+            </Heading>
+            <Button href="/work" variant="tertiary" size="s" suffixIcon="arrowRight">
+              All work
+            </Button>
+          </Row>
+          <Projects range={[1, 4]} />
+        </Column>
+      )}
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">

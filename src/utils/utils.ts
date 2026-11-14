@@ -27,8 +27,16 @@ type Metadata = {
   timeframe?: string;
   /** Work projects: position on the Work page (1 = first). Unordered items follow, newest first. */
   order?: number;
-  /** Show the first image as a centered logo instead of a full-bleed cover */
-  logo?: boolean;
+  /** Work projects: company or project name shown next to the logo */
+  company?: string;
+  /** Work projects: square logo image, e.g. "/images/logos/walmart.png" */
+  logo?: string;
+  /** Work projects: accent color for the card and page header, e.g. "#0071dc" */
+  brandColor?: string;
+  /** Work projects: short skill tags shown on the card */
+  tags?: string[];
+  /** Work projects: up to 3 key numbers, e.g. { value: "+3.6 pts", label: "order completion" } */
+  highlights?: { value: string; label: string }[];
 };
 
 import { notFound } from "next/navigation";
@@ -65,7 +73,17 @@ function validateFrontmatter(filePath: string, data: Record<string, unknown>, co
     problems.push(`"order" must be a number (got "${data.order}")`);
   }
 
-  const images = [data.image, ...(Array.isArray(data.images) ? data.images : []), ...bodyImages].filter(
+  if (data.highlights !== undefined) {
+    const ok =
+      Array.isArray(data.highlights) &&
+      data.highlights.every(
+        (h: unknown) =>
+          typeof h === "object" && h !== null && "value" in h && "label" in h,
+      );
+    if (!ok) problems.push(`"highlights" must be a list of { value, label }`);
+  }
+
+  const images = [data.image, data.logo, ...(Array.isArray(data.images) ? data.images : []), ...bodyImages].filter(
     (src): src is string => typeof src === "string" && src.startsWith("/"),
   );
   for (const src of images) {
@@ -103,7 +121,11 @@ function readMDXFile(filePath: string) {
     role: data.role || "",
     timeframe: data.timeframe || "",
     order: typeof data.order === "number" ? data.order : undefined,
-    logo: data.logo === true,
+    company: data.company || "",
+    logo: typeof data.logo === "string" ? data.logo : "",
+    brandColor: data.brandColor || "",
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    highlights: Array.isArray(data.highlights) ? data.highlights : [],
   };
 
   return { metadata, content };

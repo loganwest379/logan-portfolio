@@ -1,148 +1,103 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { AvatarGroup, Column, Flex, Heading, SmartLink, Text, Media } from "@once-ui-system/core";
+import { Icon } from "@once-ui-system/core";
 import styles from "./ProjectCard.module.scss";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   href: string;
-  priority?: boolean;
-  images: string[];
   title: string;
-  content: string;
-  description: string;
-  avatars: { src: string }[];
-  link: string;
-  linkLabel?: string;
-  github?: string;
+  summary: string;
+  company?: string;
+  logo?: string;
+  brandColor?: string;
   role?: string;
   timeframe?: string;
-  /** Show the first image as a centered logo instead of a full-bleed cover */
-  logo?: boolean;
+  tags?: string[];
+  highlights?: { value: string; label: string }[];
+  link?: string;
+  linkLabel?: string;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({
+export function ProjectCard({
   href,
-  priority,
-  images = [],
   title,
-  content,
-  description,
-  avatars,
-  link,
-  linkLabel,
-  github,
+  summary,
+  company,
+  logo,
+  brandColor,
   role,
   timeframe,
-  logo,
-}) => {
-  const hasCaseStudy = Boolean(content?.trim());
-  const cover = images[0];
+  tags = [],
+  highlights = [],
+  link,
+  linkLabel,
+}: ProjectCardProps) {
   const meta = [role, timeframe].filter(Boolean).join(" · ");
 
-  const coverElement = !cover ? (
-    // No image: a clean title panel so text-only work still has a strong card
-    <div className={styles.panel}>
-      <Text variant="display-strong-s" align="center" wrap="balance">
-        {title.split(" - ")[0]}
-      </Text>
-      {meta && (
-        <Text variant="body-default-m" onBackground="neutral-weak" align="center">
-          {meta}
-        </Text>
-      )}
-    </div>
-  ) : logo ? (
-    <div className={`${styles.panel} ${styles.panelLogo}`}>
-      <img src={cover} alt={title} className={styles.logo} />
-    </div>
-  ) : (
-    <Media
-      priority={priority}
-      src={cover}
-      alt={title}
-      aspectRatio="16/9"
-      radius="l"
-      sizes="(max-width: 960px) 100vw, 960px"
-      style={{ objectFit: "cover" }}
-    />
-  );
-
   return (
-    <Column fillWidth gap="m">
-      {hasCaseStudy ? (
-        <Link href={href} className={styles.coverLink} aria-label={`Open ${title}`}>
-          {coverElement}
+    <article
+      className={styles.card}
+      style={brandColor ? ({ "--card-accent": brandColor } as React.CSSProperties) : undefined}
+    >
+      <header className={styles.header}>
+        {logo ? (
+          <Image src={logo} alt="" width={52} height={52} className={styles.logo} />
+        ) : (
+          <span className={styles.logoFallback} aria-hidden>
+            {(company || title).charAt(0)}
+          </span>
+        )}
+        <div className={styles.headerText}>
+          {company && <span className={styles.company}>{company}</span>}
+          {meta && <span className={styles.meta}>{meta}</span>}
+        </div>
+      </header>
+
+      <h2 className={styles.title}>
+        {/* The ::after of this link stretches over the whole card, so the card is one big click target */}
+        <Link href={href} className={styles.stretchedLink}>
+          {title}
         </Link>
-      ) : (
-        coverElement
+      </h2>
+
+      <p className={styles.summary}>{summary}</p>
+
+      {highlights.length > 0 && (
+        <dl className={styles.highlights}>
+          {highlights.slice(0, 3).map((h) => (
+            <div key={h.label} className={styles.highlight}>
+              <dt className={styles.highlightValue}>{h.value}</dt>
+              <dd className={styles.highlightLabel}>{h.label}</dd>
+            </div>
+          ))}
+        </dl>
       )}
-      <Flex
-        s={{ direction: "column" }}
-        fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
-      >
-        {title && (
-          <Column flex={5} gap="8">
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-              {hasCaseStudy ? (
-                <Link href={href} className={styles.titleLink}>
-                  {title}
-                </Link>
-              ) : (
-                title
-              )}
-            </Heading>
-            {meta && (
-              <Text variant="label-default-s" onBackground="neutral-weak">
-                {meta}
-              </Text>
-            )}
-          </Column>
+
+      {tags.length > 0 && (
+        <ul className={styles.tags}>
+          {tags.slice(0, 4).map((tag) => (
+            <li key={tag} className={styles.tag}>
+              {tag}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <footer className={styles.footer}>
+        <span className={styles.cta}>
+          Read case study <Icon name="arrowRight" size="xs" />
+        </span>
+        {link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.external}
+          >
+            {linkLabel || "Visit site"} <Icon name="arrowUpRightFromSquare" size="xs" />
+          </a>
         )}
-        {(avatars?.length > 0 || description?.trim() || hasCaseStudy) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
-            )}
-            <Flex gap="24" wrap>
-              {hasCaseStudy && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">View case study</Text>
-                </SmartLink>
-              )}
-              {github && (
-                <SmartLink
-                  prefixIcon="github"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={github}
-                >
-                  <Text variant="body-default-s">Code</Text>
-                </SmartLink>
-              )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">{linkLabel || "Visit site"}</Text>
-                </SmartLink>
-              )}
-            </Flex>
-          </Column>
-        )}
-      </Flex>
-    </Column>
+      </footer>
+    </article>
   );
-};
+}

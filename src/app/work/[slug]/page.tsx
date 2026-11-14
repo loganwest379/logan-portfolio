@@ -20,6 +20,7 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import type { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import { CaseStudyHeader } from "@/components/work/CaseStudyHeader";
 
 // All posts are known at build time; unknown slugs 404 without reading the filesystem.
 export const dynamicParams = false;
@@ -47,7 +48,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return Meta.generate({
-    title: post.metadata.title,
+    title: post.metadata.company ? `${post.metadata.company}: ${post.metadata.title}` : post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
@@ -95,58 +96,26 @@ export default async function Project({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href="/work">
-          <Text variant="label-strong-m">Projects</Text>
-        </SmartLink>
-        <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.role || post.metadata.timeframe
-            ? [post.metadata.role, post.metadata.timeframe].filter(Boolean).join(" · ")
-            : post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-        </Text>
-        <Heading variant="display-strong-m">{post.metadata.title}</Heading>
-        {(post.metadata.link || post.metadata.github) && (
-          <Row gap="12" marginTop="8" wrap horizontal="center">
-            {post.metadata.link && (
-              <Button
-                href={post.metadata.link}
-                variant="secondary"
-                size="s"
-                suffixIcon="arrowUpRightFromSquare"
-              >
-                {post.metadata.linkLabel || "Visit site"}
-              </Button>
-            )}
-            {post.metadata.github && (
-              <Button href={post.metadata.github} variant="tertiary" size="s" prefixIcon="github">
-                Code
-              </Button>
-            )}
-          </Row>
-        )}
-      </Column>
-      <Row marginBottom="32" horizontal="center">
-        <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
-          <Text variant="label-default-m" onBackground="brand-weak">
-            {post.metadata.team?.map((member, idx) => (
-              <span key={idx}>
-                {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">
-                    ,{" "}
-                  </Text>
-                )}
-                <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
-              </span>
-            ))}
-          </Text>
-        </Row>
-      </Row>
-      {post.metadata.images.length > 0 && !post.metadata.logo && (
+      <CaseStudyHeader
+        title={post.metadata.title}
+        summary={post.metadata.summary}
+        company={post.metadata.company}
+        logo={post.metadata.logo}
+        brandColor={post.metadata.brandColor}
+        role={post.metadata.role}
+        timeframe={post.metadata.timeframe || (post.metadata.publishedAt && formatDate(post.metadata.publishedAt))}
+        tags={post.metadata.tags}
+        highlights={post.metadata.highlights}
+        link={post.metadata.link}
+        linkLabel={post.metadata.linkLabel}
+        github={post.metadata.github}
+      />
+      {post.metadata.images.length > 0 && (
         <Media
           priority
           aspectRatio="16 / 9"
-          radius="m"
+          radius="l"
+          border="neutral-alpha-weak"
           alt={post.metadata.title}
           src={post.metadata.images[0]}
           sizes="(max-width: 960px) 100vw, 960px"
@@ -158,9 +127,9 @@ export default async function Project({
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
         <Line maxWidth="40" />
         <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
-          Related projects
+          More work
         </Heading>
-        <Projects exclude={[post.slug]} range={[2]} />
+        <Projects exclude={[post.slug]} range={[1, 2]} />
       </Column>
       <ScrollToHash />
     </Column>
