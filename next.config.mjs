@@ -18,6 +18,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/work/building-once-ui-a-customizable-design-system",
+        destination: "/work/glide-ski-tuning",
+        permanent: true,
+      },
+      {
+        source: "/work/simple-portfolio-builder",
+        destination: "/work/brevium-enterprise-billing",
+        permanent: true,
+      },
+    ];
+  },
   sassOptions: {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],

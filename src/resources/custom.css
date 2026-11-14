@@ -36,13 +36,6 @@ img[alt*="avatar"][src*="logan.jpg"] {
   image-rendering: crisp-edges;
 }
 
-/* Force eager loading for all carousel images to prevent lag */
-.cover1-crop img,
-[data-carousel] img {
-  loading: eager !important;
-  fetchpriority: high;
-}
-
 /* Hide previous image immediately on transition */
 [data-carousel] img:not([data-active="true"]) {
   opacity: 0;

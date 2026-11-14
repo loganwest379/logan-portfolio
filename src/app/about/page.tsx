@@ -12,11 +12,11 @@ import {
   Schema,
   Row,
 } from "@once-ui-system/core";
-import { baseURL, about, person } from "@/resources";
+import { baseURL, about, person, sameAs } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import { SocialLinks } from "@/components/about/SocialLinks";
 import styles from "@/components/about/about.module.scss";
-import React from "react";
+import type React from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -64,6 +64,7 @@ export default function About() {
         title={about.title}
         description={about.description}
         path={about.path}
+        sameAs={Object.values(sameAs)}
         image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
         author={{
           name: person.name,

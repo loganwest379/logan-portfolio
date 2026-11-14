@@ -9,9 +9,9 @@ import {
   Column,
   Flex,
   Meta,
-  opacity,
+  type Opacity,
   RevealFx,
-  SpacingToken,
+  type SpacingToken,
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
@@ -54,12 +54,9 @@ export default async function RootLayout({
       )}
     >
       <head>
-        <link rel="preload" as="image" href="/images/projects/project-01/cover1.JPEG" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/projects/project-01/cover2.JPEG" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/projects/project-01/cover3.JPEG" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/projects/project-01/cover4.JPEG" fetchPriority="high" />
         <script
           id="theme-init"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static inline theme script prevents a flash of the wrong theme
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -136,7 +133,7 @@ export default async function RootLayout({
               }}
               gradient={{
                 display: effects.gradient.display,
-                opacity: effects.gradient.opacity as opacity,
+                opacity: effects.gradient.opacity as Opacity,
                 x: effects.gradient.x,
                 y: effects.gradient.y,
                 width: effects.gradient.width,
@@ -147,20 +144,20 @@ export default async function RootLayout({
               }}
               dots={{
                 display: effects.dots.display,
-                opacity: effects.dots.opacity as opacity,
+                opacity: effects.dots.opacity as Opacity,
                 size: effects.dots.size as SpacingToken,
                 color: effects.dots.color,
               }}
               grid={{
                 display: effects.grid.display,
-                opacity: effects.grid.opacity as opacity,
+                opacity: effects.grid.opacity as Opacity,
                 color: effects.grid.color,
                 width: effects.grid.width,
                 height: effects.grid.height,
               }}
               lines={{
                 display: effects.lines.display,
-                opacity: effects.lines.opacity as opacity,
+                opacity: effects.lines.opacity as Opacity,
                 size: effects.lines.size as SpacingToken,
                 thickness: effects.lines.thickness,
                 angle: effects.lines.angle,

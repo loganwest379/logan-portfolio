@@ -13,7 +13,7 @@ const person: Person = {
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -50,7 +50,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: `/api/og/generate?title=${encodeURIComponent(`${person.name}'s Portfolio`)}`,
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
@@ -66,7 +66,7 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/glide-ski-tuning",
   },
   subline: (
     <>
@@ -109,10 +109,10 @@ const about: About = {
         timeframe: "Jan 2026 – Apr 2026",
         role: "Product Manager Intern",
         achievements: [
-          "Prototyping and testing direct-to-consumer funnels (landing pages, messaging, pricing) with rapid A/B experiments",
-          "Analyzing usage and survey data to validate the 15-skill model and improve onboarding and retention",
-          "Building competitor scans, personas, and customer journey maps to inform positioning and go-to-market strategy",
-          "Producing concise executive readouts (findings, KPIs, next experiments) and drafting UX copy or lightweight PRDs",
+          "Prototyped and tested direct-to-consumer funnels (landing pages, messaging, pricing) with rapid A/B experiments",
+          "Analyzed usage and survey data to validate the 15-skill model and improve onboarding and retention",
+          "Built competitor scans, personas, and customer journey maps to inform positioning and go-to-market strategy",
+          "Produced concise executive readouts (findings, KPIs, next experiments) and drafted UX copy or lightweight PRDs",
         ],
         images: [],
       },
@@ -261,8 +261,8 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Product work and case studies by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
@@ -275,7 +275,7 @@ const gallery: Gallery = {
     {
       src: "/images/projects/project-01/g1.JPG",
       alt: "Gallery image 1",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g2.JPEG",
@@ -285,17 +285,17 @@ const gallery: Gallery = {
     {
       src: "/images/projects/project-01/g3.JPEG",
       alt: "Gallery image 3",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g4.JPEG",
       alt: "Gallery image 4",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g5.JPEG",
       alt: "Gallery image 5",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g6.JPEG",
@@ -315,7 +315,7 @@ const gallery: Gallery = {
     {
       src: "/images/projects/project-01/g9.JPEG",
       alt: "Gallery image 9",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g10.JPEG",
@@ -325,12 +325,12 @@ const gallery: Gallery = {
     {
       src: "/images/projects/project-01/g11.JPEG",
       alt: "Gallery image 11",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/projects/project-01/g12.JPEG",
       alt: "Gallery image 12",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
   ],
 };

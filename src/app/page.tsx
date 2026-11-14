@@ -12,9 +12,8 @@ import {
   Line,
   Carousel,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL, routes, social, sameAs } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
-import { CarouselPreloader } from "@/components/CarouselPreloader";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -29,7 +28,6 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
-      <CarouselPreloader />
       <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
         as="webPage"
@@ -37,6 +35,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
+        sameAs={Object.values(sameAs)}
         image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
@@ -100,26 +99,21 @@ export default function Home() {
                   {about.title}
                 </Row>
               </Button>
-              <Button
-                data-border="rounded"
-                href="https://github.com/loganwest379"
-                variant="secondary"
-                size="m"
-                weight="default"
-                prefixIcon="github"
-              >
-                GitHub
-              </Button>
-              <Button
-                data-border="rounded"
-                href="https://www.linkedin.com/in/loganwest03"
-                variant="secondary"
-                size="m"
-                weight="default"
-                prefixIcon="linkedin"
-              >
-                LinkedIn
-              </Button>
+              {social
+                .filter((item) => item.name === "GitHub" || item.name === "LinkedIn")
+                .map((item) => (
+                  <Button
+                    key={item.name}
+                    data-border="rounded"
+                    href={item.link}
+                    variant="secondary"
+                    size="m"
+                    weight="default"
+                    prefixIcon={item.icon}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
             </Row>
           </RevealFx>
         </Column>
@@ -128,6 +122,7 @@ export default function Home() {
         <Column fillWidth paddingX="l">
           <div className="cover1-crop" style={{ scrollBehavior: "smooth" }}>
             <Carousel
+              priority
               sizes="(max-width: 960px) 100vw, 960px"
               items={[
                 { slide: "/images/projects/project-01/cover2.JPEG", alt: "Cover image 1" },
