@@ -19,3 +19,29 @@
         bottom: 0;
     }
 }
+// Round glass button for the theme toggle, matching the liquid nav pill
+.themeButton {
+    display: inline-flex;
+    padding: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2) brightness(1.08);
+    backdrop-filter: blur(10px) saturate(1.2) brightness(1.08);
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.7),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 12px 32px -14px rgba(0, 40, 90, 0.5),
+        0 2px 6px rgba(0, 40, 90, 0.1);
+
+    :global([data-theme="dark"]) & {
+        background: rgba(10, 18, 40, 0.26);
+        box-shadow:
+            inset 0 1px 1px rgba(255, 255, 255, 0.34),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+            0 12px 32px -14px rgba(0, 0, 0, 0.6);
+    }
+
+    > * {
+        border-radius: 999px !important;
+    }
+}

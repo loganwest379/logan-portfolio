@@ -28,7 +28,7 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column gap="12" marginBottom="xl" horizontal="center" align="center">
+      <Column gap="12" horizontal="center" align="center">
         <Heading variant="display-strong-s">Work</Heading>
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance">
           Where I&apos;ve worked and what I&apos;ve built on the side. Open a folder to see what I did.

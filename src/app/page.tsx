@@ -10,11 +10,11 @@ import {
   Schema,
   Meta,
   Line,
-  Carousel,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes, social, sameAs } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
 import { Projects } from "@/components/work/Projects";
+import { HomeCarousel } from "@/components/HomeCarousel";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -121,13 +121,7 @@ export default function Home() {
       </Column>
       <RevealFx translateY="16" delay={0.6}>
         <Column fillWidth paddingX="l">
-          <div className="cover1-crop" style={{ scrollBehavior: "smooth" }}>
-            <Carousel
-              priority
-              sizes="(max-width: 960px) 100vw, 960px"
-              items={home.carousel.map((photo) => ({ slide: photo.src, alt: photo.alt }))}
-            />
-          </div>
+          <HomeCarousel photos={home.carousel} />
         </Column>
       </RevealFx>
       {routes["/work"] && (

@@ -8,7 +8,6 @@ import {
   Column,
   Flex,
   Heading,
-  Media,
   Text,
   SmartLink,
   Row,
@@ -101,7 +100,7 @@ export default async function Project({
         summary={post.metadata.summary}
         company={post.metadata.company}
         logo={post.metadata.logo}
-        brandColor={post.metadata.brandColor}
+        cover={post.metadata.images[0]}
         role={post.metadata.role}
         timeframe={post.metadata.timeframe || (post.metadata.publishedAt && formatDate(post.metadata.publishedAt))}
         tags={post.metadata.tags}
@@ -110,17 +109,6 @@ export default async function Project({
         linkLabel={post.metadata.linkLabel}
         github={post.metadata.github}
       />
-      {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="l"
-          border="neutral-alpha-weak"
-          alt={post.metadata.title}
-          src={post.metadata.images[0]}
-          sizes="(max-width: 960px) 100vw, 960px"
-        />
-      )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
       </Column>

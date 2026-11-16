@@ -1,30 +1,33 @@
-.hero {
-  --hero-accent: var(--brand-solid-strong);
+.card {
+  width: 100%;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--neutral-alpha-weak);
+  background: var(--surface-background);
+  overflow: hidden;
+}
 
+.cover {
   position: relative;
   width: 100%;
+  aspect-ratio: 5 / 2;
+  border-bottom: 1px solid var(--neutral-alpha-weak);
+  background: var(--neutral-alpha-weak);
+
+  @media (max-width: 640px) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.coverImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 2.5rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--neutral-alpha-weak);
-  background:
-    radial-gradient(
-      90% 120% at 0% 0%,
-      color-mix(in srgb, var(--hero-accent) 14%, transparent) 0%,
-      transparent 60%
-    ),
-    var(--surface-background);
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 4px;
-    background: var(--hero-accent);
-  }
+  padding: 2rem 2.5rem 2.25rem;
 
   @media (max-width: 640px) {
     padding: 1.5rem;
@@ -48,14 +51,14 @@
 .identity {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .logo {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   border: 1px solid var(--neutral-alpha-weak);
   object-fit: cover;
   background: #fff;
@@ -64,11 +67,11 @@
 .identityText {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.125rem;
 }
 
 .company {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--neutral-on-background-strong);
 }
@@ -80,7 +83,7 @@
 
 .title {
   margin: 0;
-  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -90,7 +93,7 @@
 
 .summary {
   margin: 0;
-  max-width: 44rem;
+  max-width: 42rem;
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--neutral-on-background-medium);
@@ -101,9 +104,8 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 0.25rem 0 0;
-  padding: 1.25rem 0;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--neutral-alpha-weak);
-  border-bottom: 1px solid var(--neutral-alpha-weak);
 
   @media (max-width: 560px) {
     grid-template-columns: 1fr;
@@ -117,8 +119,8 @@
 }
 
 .value {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 650;
   line-height: 1.1;
   color: var(--neutral-on-background-strong);
   font-variant-numeric: tabular-nums;
@@ -137,6 +139,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  margin-top: 0.25rem;
 }
 
 .tags {
@@ -148,10 +151,70 @@
   list-style: none;
 }
 
+// Soft pastel labels; each tag keeps the same color everywhere.
 .tag {
+  --tag-bg: #eef0f2;
+  --tag-fg: #44505c;
+
   font-size: 0.75rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 999px;
-  background: var(--neutral-alpha-weak);
-  color: var(--neutral-on-background-medium);
+  font-weight: 500;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 6px;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+
+  &[data-tone="sage"] {
+    --tag-bg: #e8f0e6;
+    --tag-fg: #3d5a3d;
+  }
+  &[data-tone="sky"] {
+    --tag-bg: #e4eef8;
+    --tag-fg: #2f4f73;
+  }
+  &[data-tone="lavender"] {
+    --tag-bg: #ece9f6;
+    --tag-fg: #4f4377;
+  }
+  &[data-tone="peach"] {
+    --tag-bg: #f9eae1;
+    --tag-fg: #7a4a2f;
+  }
+  &[data-tone="butter"] {
+    --tag-bg: #f6f0da;
+    --tag-fg: #66561f;
+  }
+  &[data-tone="rose"] {
+    --tag-bg: #f6e7eb;
+    --tag-fg: #7a3a4a;
+  }
+}
+
+:global([data-theme="dark"]) .tag {
+  --tag-bg: rgba(255, 255, 255, 0.07);
+  --tag-fg: #c9d1d9;
+
+  &[data-tone="sage"] {
+    --tag-bg: rgba(140, 180, 140, 0.16);
+    --tag-fg: #c3dcc0;
+  }
+  &[data-tone="sky"] {
+    --tag-bg: rgba(130, 170, 220, 0.16);
+    --tag-fg: #bcd3ee;
+  }
+  &[data-tone="lavender"] {
+    --tag-bg: rgba(170, 155, 220, 0.16);
+    --tag-fg: #d3cbf0;
+  }
+  &[data-tone="peach"] {
+    --tag-bg: rgba(225, 160, 125, 0.16);
+    --tag-fg: #efcbb6;
+  }
+  &[data-tone="butter"] {
+    --tag-bg: rgba(220, 200, 120, 0.16);
+    --tag-fg: #eadfae;
+  }
+  &[data-tone="rose"] {
+    --tag-bg: rgba(220, 140, 160, 0.16);
+    --tag-fg: #efc4cf;
+  }
 }

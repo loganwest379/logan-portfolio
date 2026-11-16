@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import GlassFolder, { type ArtPreset, type FolderFile } from "@/components/ui/glass-folder-cards";
+import { useSiteTheme } from "@/hooks/useSiteTheme";
 import styles from "./WorkFolders.module.scss";
 
 export interface WorkFolderGroup {
@@ -16,20 +17,6 @@ export interface WorkFolderGroup {
 
 const MAX_WIDTH = 420;
 const GAP = 48;
-
-/** Follows the site's light/dark toggle (the `data-theme` attribute on <html>). */
-function useSiteTheme(): "light" | "dark" {
-  const [theme, setTheme] = React.useState<"light" | "dark">("light");
-  React.useEffect(() => {
-    const root = document.documentElement;
-    const read = () => setTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
-    read();
-    const observer = new MutationObserver(read);
-    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-  }, []);
-  return theme;
-}
 
 export function WorkFolders({ groups }: { groups: WorkFolderGroup[] }) {
   const ref = React.useRef<HTMLDivElement>(null);

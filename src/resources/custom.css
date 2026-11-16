@@ -5,60 +5,14 @@ img[alt*="avatar"][src*="logan.jpg"] {
   object-position: center 20% !important;
 }
 
-/* Smooth scrolling for carousel */
-.cover1-crop,
-.cover1-crop * {
-  scroll-behavior: smooth;
+/* Liquid navbar links: use the navbar's own colors, not the site's link color */
+.nimbus-nav a.nimbus-item,
+.nimbus-nav a.nimbus-item:visited {
+  color: var(--n-fg-soft);
 }
-
-/* Fast, immediate transitions for carousel slides and images - no lag */
-.cover1-crop img,
-.cover1-crop picture,
-[data-carousel] img,
-[data-carousel] picture {
-  transition: opacity 0.15s ease-out !important;
-  will-change: opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  image-rendering: auto;
-}
-
-/* Ensure carousel images load properly and handle errors */
-.cover1-crop img,
-[data-carousel] img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-/* Hide previous image immediately on transition */
-[data-carousel] img:not([data-active="true"]) {
-  opacity: 0;
-  pointer-events: none;
-}
-
-[data-carousel] img[data-active="true"] {
-  opacity: 1;
-  transition: opacity 0.15s ease-out !important;
-}
-
-/* Smooth carousel container with instant switching */
-[data-carousel],
-[role="region"][aria-label*="carousel"] {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overflow: hidden;
-}
-
-/* Optimize carousel slide transitions - immediate switch */
-[data-carousel] > * {
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  will-change: transform;
+.nimbus-nav a.nimbus-item:hover,
+.nimbus-nav a.nimbus-item[aria-current="page"] {
+  color: var(--n-fg);
 }
 
 /* :root {
