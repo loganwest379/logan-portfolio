@@ -78,7 +78,7 @@ export default function Home() {
             </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
-            <Row gap="12" vertical="center">
+            <Row gap="12" vertical="center" horizontal="center" wrap>
               <Button
                 id="about"
                 data-border="rounded"
@@ -97,12 +97,13 @@ export default function Home() {
                       size="m"
                     />
                   )}
-                  {about.title}
+                  About me
                 </Row>
               </Button>
-              {social
-                .filter((item) => item.name === "GitHub" || item.name === "LinkedIn")
-                .map((item) => (
+              {["Resume", "LinkedIn", "GitHub"].map((name) => {
+                const item = social.find((s) => s.name === name);
+                if (!item) return null;
+                return (
                   <Button
                     key={item.name}
                     data-border="rounded"
@@ -114,16 +115,12 @@ export default function Home() {
                   >
                     {item.name}
                   </Button>
-                ))}
+                );
+              })}
             </Row>
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Column fillWidth paddingX="l">
-          <HomeCarousel photos={home.carousel} />
-        </Column>
-      </RevealFx>
       {routes["/work"] && (
         <Column fillWidth gap="l" paddingX="l">
           <Row fillWidth vertical="end" horizontal="between" gap="16" wrap>
@@ -134,9 +131,24 @@ export default function Home() {
               All work
             </Button>
           </Row>
-          <Projects />
+          <Projects openFirst />
         </Column>
       )}
+      <Column fillWidth horizontal="center" gap="m" paddingX="l">
+        <Column fillWidth gap="m" style={{ maxWidth: "36rem" }}>
+          <Column gap="8">
+            <Heading as="h2" variant="display-strong-xs">
+              Outside of work
+            </Heading>
+            {home.outsideWork && (
+              <Text onBackground="neutral-weak" variant="body-default-l" wrap="balance">
+                {home.outsideWork}
+              </Text>
+            )}
+          </Column>
+          <HomeCarousel photos={home.carousel} />
+        </Column>
+      </Column>
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">

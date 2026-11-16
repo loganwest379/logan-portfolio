@@ -18,7 +18,14 @@ export interface WorkFolderGroup {
 const MAX_WIDTH = 420;
 const GAP = 48;
 
-export function WorkFolders({ groups }: { groups: WorkFolderGroup[] }) {
+export function WorkFolders({
+  groups,
+  openFirst = false,
+}: {
+  groups: WorkFolderGroup[];
+  /** Start the first folder open, so its files show without a click */
+  openFirst?: boolean;
+}) {
   const ref = React.useRef<HTMLDivElement>(null);
   const [width, setWidth] = React.useState(0);
   const tone = useSiteTheme();
@@ -40,7 +47,7 @@ export function WorkFolders({ groups }: { groups: WorkFolderGroup[] }) {
 
   return (
     <div className={styles.wrap}>
-      <div ref={ref} className={styles.row}>
+      <div ref={ref} className={styles.row} data-open-first={openFirst || undefined}>
         {width > 0 &&
           groups.map((group, i) => (
             <GlassFolder
@@ -52,6 +59,7 @@ export function WorkFolders({ groups }: { groups: WorkFolderGroup[] }) {
               tone={tone}
               files={group.files}
               action="none"
+              defaultOpen={openFirst && i === 0}
               width={width}
               appearDelay={i * 140}
             />

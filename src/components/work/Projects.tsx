@@ -33,8 +33,9 @@ function toFiles(projects: Project[]) {
 /**
  * The Work folders: "Work Experience" and "Side Projects".
  * Each project's `category` frontmatter decides its folder.
+ * `openFirst` starts the first folder open so its files are visible without a click.
  */
-export function Projects() {
+export function Projects({ openFirst = false }: { openFirst?: boolean }) {
   const all = getPosts(["src", "app", "work", "projects"]).sort(byOrder);
   const experience = all.filter((p) => p.metadata.category === "experience");
   const projects = all.filter((p) => p.metadata.category !== "experience");
@@ -56,5 +57,5 @@ export function Projects() {
     },
   ].filter((g) => g.files.length > 0) as WorkFolderGroup[];
 
-  return <WorkFolders groups={groups} />;
+  return <WorkFolders groups={groups} openFirst={openFirst} />;
 }

@@ -53,8 +53,8 @@ const home: Home = {
   image: `/api/og/generate?title=${encodeURIComponent(`${person.name}'s Portfolio`)}`,
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Welcome to my portfolio!</>,
+  description: `${person.name} is a product manager who builds data-driven, user-focused products. Walmart Global Tech, LeaderFactor, and founder of Leeway.`,
+  headline: <>Hi, I&apos;m Logan.</>,
   featured: {
     display: true,
     title: (
@@ -70,7 +70,14 @@ const home: Home = {
   },
   subline: (
     <>
-      Hi! I&apos;m Logan, thanks for finding my portfolio. I&apos;m so glad you&apos;re here. I built this website to provide a place to share what I&apos;ve done, what I&apos;m working on, and the fun things I like to do! Feel free to connect with me; I&apos;d love to say hello!
+      A product manager who builds data-driven, user-focused products. Most recently at Walmart
+      Global Tech. Now building Leeway, a travel money app.
+    </>
+  ),
+  outsideWork: (
+    <>
+      When I&apos;m not building products, I&apos;m skiing (10 resorts and counting), exploring the
+      mountains, or playing pickleball with my wife.
     </>
   ),
   carousel: [

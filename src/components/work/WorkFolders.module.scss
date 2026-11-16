@@ -17,6 +17,11 @@
   padding-top: 4rem;
   // keeps layout steady before the folders measure themselves
   min-height: 22rem;
+
+  // a folder that starts open needs room above it for the fanned-out files
+  &[data-open-first] {
+    padding-top: 9rem;
+  }
 }
 
 .hint {
