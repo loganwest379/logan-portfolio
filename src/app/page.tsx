@@ -140,7 +140,7 @@ export default function Home() {
               All work
             </Button>
           </Row>
-          <Projects range={[1, 4]} />
+          <Projects />
         </Column>
       )}
       {routes["/blog"] && (

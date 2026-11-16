@@ -27,6 +27,8 @@ type Metadata = {
   timeframe?: string;
   /** Work projects: position on the Work page (1 = first). Unordered items follow, newest first. */
   order?: number;
+  /** Work projects: which folder it goes in on the Work page */
+  category?: "experience" | "project";
   /** Work projects: company or project name shown next to the logo */
   company?: string;
   /** Work projects: square logo image, e.g. "/images/logos/walmart.png" */
@@ -71,6 +73,10 @@ function validateFrontmatter(filePath: string, data: Record<string, unknown>, co
   const bodyImages = [...content.matchAll(/(?:\]\(|src=["'])(\/images\/[^)"'\s]+)/g)].map((m) => m[1]);
   if (data.order !== undefined && typeof data.order !== "number") {
     problems.push(`"order" must be a number (got "${data.order}")`);
+  }
+
+  if (data.category !== undefined && !["experience", "project"].includes(data.category as string)) {
+    problems.push(`"category" must be "experience" or "project" (got "${data.category}")`);
   }
 
   if (data.highlights !== undefined) {
@@ -121,6 +127,7 @@ function readMDXFile(filePath: string) {
     role: data.role || "",
     timeframe: data.timeframe || "",
     order: typeof data.order === "number" ? data.order : undefined,
+    category: data.category === "experience" ? "experience" : "project",
     company: data.company || "",
     logo: typeof data.logo === "string" ? data.logo : "",
     brandColor: data.brandColor || "",

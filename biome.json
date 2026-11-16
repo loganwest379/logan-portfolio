@@ -6,7 +6,10 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "ignore": [
+      "src/components/ui/**"
+    ]
   },
   "formatter": {
     "enabled": true,

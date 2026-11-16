@@ -12,6 +12,7 @@ npm run dev     # http://localhost:3000
 npm run build   # production build
 npm run lint    # Biome lint
 npm run optimize-images  # shrink oversized photos in public/images
+npm run previews         # regenerate the project file images for the Work folders
 ```
 
 ## Adding content
@@ -21,9 +22,11 @@ npm run optimize-images  # shrink oversized photos in public/images
 2. Put any images in `public/images/blog/`.
 3. Fill in the frontmatter and write the post.
 
-**New project**
+**New project or job**
 1. Copy `templates/project.mdx` to `src/app/work/projects/<slug>.mdx`.
-2. Put images in `public/images/projects/<slug>/`.
+2. Set `category` to `experience` (Work Experience folder) or `project` (Side Projects folder).
+3. Add a square logo to `public/images/logos/` and set `logo` and `brandColor`.
+4. Run `npm run previews` to make the file image shown inside the folder.
 
 **Photos (gallery or homepage carousel)**
 1. Drop the file in `public/images/gallery/` or `public/images/home/`.

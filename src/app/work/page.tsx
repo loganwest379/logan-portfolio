@@ -31,7 +31,7 @@ export default function Work() {
       <Column gap="12" marginBottom="xl" horizontal="center" align="center">
         <Heading variant="display-strong-s">Work</Heading>
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance">
-          Product roles, case studies, and things I&apos;ve built. Click any card to see what I did.
+          Where I&apos;ve worked and what I&apos;ve built on the side. Open a folder to see what I did.
         </Text>
       </Column>
       <Projects />
